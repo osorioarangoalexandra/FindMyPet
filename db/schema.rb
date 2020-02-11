@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_10_173803) do
+ActiveRecord::Schema.define(version: 2020_02_11_002320) do
+
+  create_table "lost_pets", force: :cascade do |t|
+    t.integer "pet_id"
+    t.integer "owner_id"
+    t.datetime "lost_date"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "owners", force: :cascade do |t|
     t.string "name"
@@ -30,6 +40,9 @@ ActiveRecord::Schema.define(version: 2020_02_10_173803) do
     t.text "characteristic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
   end
 
   create_table "users", force: :cascade do |t|
