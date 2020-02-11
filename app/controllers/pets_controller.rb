@@ -14,6 +14,7 @@ class PetsController < ApplicationController
     end
 
     def create
+
         @pet = current_user.pets.new(pet_params)
 
         if @pet.save
@@ -49,7 +50,7 @@ class PetsController < ApplicationController
     private
 
     def pet_params
-        params.require(:pet).permit(:owner_id, :name, :category, :breed, :color, :characteristic, :image)
+        params.require(:pet).permit(:user_id, :name, :category, :breed, :color, :characteristic, :image)
     end
 
 end
