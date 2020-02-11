@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
 
     def index
-        @pets = Pet.all.order('created_at desc')
+        @pets = current_user.pets
     end
 
 

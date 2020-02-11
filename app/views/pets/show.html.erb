@@ -1,0 +1,27 @@
+<%# <%= @pet.inspect %> 
+<% if current_user.id == @pet.user_id %>
+    <div> </div>
+    <div> </div>
+    <div> </div>
+    <%= image_tag(@pet.image, style: "width: 100px") %>
+    <div> </div>
+    <%= @pet.name %>
+    <div> </div>
+    <%= @pet.category %>
+    <div> </div>
+    <%= @pet.breed %>
+    <div> </div>
+    <%= @pet.color %>
+    <div> </div>
+    <%= @pet.characteristic %>
+    <div> </div>
+    <%= @pet.user_id %>
+    <div> </div>
+    <div> </div>
+    <%= link_to 'Edit', edit_pet_path(@pet) %> |
+    <%= link_to 'Back', pets_path %>
+<% else %>
+    <h1>This isn't your pet!!</h1>
+    
+    <% end %>
+    
