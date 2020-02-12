@@ -1,2 +1,18 @@
-<%= @report.comment%>
-<%= @report.pet.name%>
+    <div></div>
+   <label > Name:</label>
+    <%= @report.pet.name%>
+    <div></div>
+    <label > When?</label>
+    <%= @report.last_seen%>
+    <div></div>
+    <label > Latitude</label>
+    <%= @report.latitude%>
+    <div></div>
+    <label > Longitude</label>
+    <%= @report.longitude%>
+    <div></div>
+    <label > comment</label>
+    <%= @report.comment%>
+    <div></div>
+  
+    <%= link_to 'Back', pets_path %>

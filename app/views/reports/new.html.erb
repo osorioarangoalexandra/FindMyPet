@@ -1,4 +1,14 @@
 <%= form_for [@pet,@report] do |form|%>
+   
+    <label > When?</label>
+    <%= form.date :last_seen%>
+    <div></div>
+    <label > Latitude</label>
+    <%= form.text :latitude%>
+    <div></div>
+    <label > Longitude</label>
+    <%= form.text :longitude%>
+    <div></div>
     <label > comment</label>
     <%= form.text_area :comment%>
     <%= form.submit %>
