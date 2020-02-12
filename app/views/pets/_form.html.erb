@@ -2,34 +2,74 @@
 
 
     <div class="field">
+    <p> 
         <%= form.label :name %>
         <%= form.text_field :name  %>
+    </P>
     </div>
     
     <div class="field">
+    <p>
         <%= form.label :category %>
-        <%= form.text_field :category  %>
+        <%= form.select :category,['Cat','Dog','Bird']  %>
+    </p>
     </div>
 
     <div class="field">
+      <p>
         <%= form.label :breed %>
         <%= form.text_field :breed  %>
+      </p>
     </div>
 
     <div class="field">
+     <p>
         <%= form.label :color %>
         <%= form.text_field :color  %>
+    </p>
     </div>
 
     <div class="field">
+      <p>
         <%= form.label :characteristic %>
         <%= form.text_field :characteristic  %>
+      </p>
     </div>
 
 
     <div class="field">
+    <p>
     <%= form.label :image %>
     <%= form.file_field :image %>
+    </p>
+    </div>
+
+    <div class="field">
+      <p>
+        <%= form.label :date_lost %>
+        <%= form.date_field :date_lost  %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>
+        <%= form.label :latitude %>
+        <%= form.text_field :latitude  %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>
+        <%= form.label :longitude %>
+        <%= form.text_field :longitude  %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>
+        <%= form.label :Is_your_pet_lost? %>
+        <%= form.check_box :status  %>
+      </p>
     </div>
 
 

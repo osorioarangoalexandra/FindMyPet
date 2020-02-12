@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_11_152821) do
+ActiveRecord::Schema.define(version: 2020_02_12_005833) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,25 +33,6 @@ ActiveRecord::Schema.define(version: 2020_02_11_152821) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "lost_pets", force: :cascade do |t|
-    t.integer "pet_id"
-    t.integer "owner_id"
-    t.datetime "lost_date"
-    t.decimal "latitude"
-    t.decimal "longitude"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "owners", force: :cascade do |t|
-    t.string "name"
-    t.string "lastname"
-    t.integer "phone"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "pets", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
@@ -61,9 +42,21 @@ ActiveRecord::Schema.define(version: 2020_02_11_152821) do
     t.text "characteristic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date_lost"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.boolean "status"
   end
 
   create_table "reports", force: :cascade do |t|
+    t.integer "pet_id"
+    t.integer "user_id"
+    t.date "last_seen"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
