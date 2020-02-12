@@ -5,17 +5,36 @@
     <div> </div>
     <%= image_tag(@pet.image, style: "width: 100px") %>
     <div> </div>
+   
+    <%= "Name:" %>
     <%= @pet.name %>
     <div> </div>
-    <%= @pet.category %>
+    <%= "Category:" %>
+    <%=  @pet.category %>
     <div> </div>
+    <%= "Breed:"%>
     <%= @pet.breed %>
     <div> </div>
+    <%= "Color:"%>
     <%= @pet.color %>
     <div> </div>
+    <%= "Characteristic:"%>
     <%= @pet.characteristic %>
     <div> </div>
-    <%= @pet.user_id %>
+    <%= "Owner:"%>
+    <%= @pet.user.name %>
+    <div> </div>
+    <%= "Date Lost:"%>
+    <%= @pet.date_lost %>
+    <div> </div>
+    <%= "Longitude:"%>
+    <%= @pet.longitude %>
+    <div> </div>
+    <%= "Latitude:"%>
+    <%= @pet.latitude %>
+    <div> </div>
+    <%= "Status:"%>
+    <%= @pet.status %>  
     <div> </div>
     <div> </div>
     <%= link_to 'Edit', edit_pet_path(@pet) %> |
