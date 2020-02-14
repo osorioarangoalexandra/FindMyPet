@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
     private
 
     def report_params
-        params.require(:report).permit(:comment)
+        params.require(:report).permit(:user_id, :last_seen, :latitude, :longitude, :comment)
     end
     
 end

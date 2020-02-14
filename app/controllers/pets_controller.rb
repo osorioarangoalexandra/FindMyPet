@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
 
     def index
-        @pets = current_user.pets
+        @pets = Pet.all
     end
 
 
@@ -16,6 +16,9 @@ class PetsController < ApplicationController
     def create
 
         @pet = current_user.pets.new(pet_params)
+         latlong = Geocoder.search(params[:pet][:last_seen]).first.coordinates
+         @pet.longitude = latlong[1]
+         @pet.latitude = latlong[0]
 
         if @pet.save
             redirect_to pets_path, notice: 'Your Pet was succesfully created.'
@@ -50,9 +53,9 @@ class PetsController < ApplicationController
     private
 
     def pet_params
-        params.require(:pet).permit(:user_id, :name, :category, :breed, :color, :characteristic, :image, :date_lost, :latitude, :longitude, :status)
+        params.require(:pet).permit(:name, :category, :last_seen, :breed, :color, :characteristic, :image, :date_lost, :status)
     end
 
-end
+    end
 
     

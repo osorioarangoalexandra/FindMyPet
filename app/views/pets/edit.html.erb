@@ -1,7 +1,7 @@
 <% if current_user.id == @pet.user_id %>
 <h1>Editing Pet</h1>
 
-<%= render 'form', pet: @pett %>
+<%= render 'form', pet: @pet %>
 
 <%= link_to 'Show', @pet %> |
 <%= link_to 'Back', pets_path %>

@@ -1,9 +1,10 @@
 <%# <%= @pet.inspect %> 
-<% if current_user.id == @pet.user_id %>
+
     <div> </div>
     <div> </div>
     <div> </div>
-    <%= image_tag(@pet.image, style: "width: 100px") %>
+    <%= image_tag(@pet.image, style: "width: 100px", class: "img-rounded") %>
+    
     <div> </div>
    
     <%= "Name:" %>
@@ -37,10 +38,63 @@
     <%= @pet.status %>  
     <div> </div>
     <div> </div>
-    <%= link_to 'Edit', edit_pet_path(@pet) %> |
-    <%= link_to 'Back', pets_path %>
-<% else %>
-    <h1>This isn't your pet!!</h1>
+
+<div id="map" style="width:100%;height:400px;"></div>
+
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @pet.latitude %>, lng: <%= @pet.longitude %>},
+          zoom: 20
+        });
+      }
+    </script>
+
+ <h1> Last Seen Reports </h1>
+
+<table>
+  <thead style= text-align:center;>
+  
+    <tr>
+      <th>Who made the report</th>
+      <th>When?</th>
+      <th>Where Lat?</th>
+      <th>Where Lon?</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody style= text-align:center;>
+    <% @pet.reports.each do |report| %>
+      <tr>
+        <td><%= report.user_id%></td>
+        <td><%= report.last_seen %></td>
+        <td><%= report.latitude %></td>
+        <td><%= report.longitude %></td>
+        <td><%= report.comment %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+     <% if user_signed_in? && current_user.id == @pet.user.id %>
+        <%= link_to "Edit 2", "/pets/#{params[:id]}/edit" %>
+        <%= link_to "New Report", "/pets/#{params[:id]}/reports/new" %>
+       <%= link_to 'Back', pets_path %>
+     <% elsif user_signed_in? %>
+        <%= link_to "New Report", "/pets/#{params[:id]}/reports/new" %>
+        <%= link_to 'Back', pets_path %>
+    <% elsif %>
+        <h3>Have you seen this pet?!!</h3>
+        <h3>Log In or sign up to create a report!</h3>
+
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
     
     <% end %>
     
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['API_KEY']%>&callback=initMap"
+  type="text/javascript"></script>

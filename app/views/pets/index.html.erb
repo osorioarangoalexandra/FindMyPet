@@ -1,36 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pets</h1>
-
+<h1 style= "text-align: center;">Lost Pets</h1>
+<p></p>
+<div class="d-flex justify-content-around">
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Breed</th>
-      <th>Color</th>
-      <th>Characteristic</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+  
   <tbody>
  
     <% @pets.each do |pet| %>
       <tr>
-        <td><%= pet.name %></td>
-        <td><%= pet.category %></td>
-        <td><%= pet.breed %></td>
-        <td><%= pet.color %></td>
-        <td><%= pet.characteristic %></td>
-        <td><%= link_to 'Show', pet %></td>
-        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+      <div class="card" style="width: 18rem;">
+      <%= image_tag(pet.image, style: "width: 100px" ) %>
+      <div class="card-body">
+      <h5 class="card-title"><%= "Name: #{pet.name}" %></h5>
+      <p class="card-text"> <%= "Date Lost: #{pet.date_lost}" %></p>
+      <a><%= link_to 'See Details', pet, :class => "button btn btn-info" %> </a>
+
+      
+  </div>
+</div>
+        
       </tr>
+  </div>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Pet', new_pet_path %>
+
+<%# <%= link_to 'New Pet', new_pet_path %> 
