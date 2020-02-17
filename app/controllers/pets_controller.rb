@@ -1,11 +1,12 @@
 class PetsController < ApplicationController
 
     def index
-        @pets = Pet.all
+        @pets = Pet.all.order('created_at desc')
     end
 
 
     def show
+        
         @pet = Pet.find(params[:id])
     end
 

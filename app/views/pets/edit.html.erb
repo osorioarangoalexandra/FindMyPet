@@ -1,13 +1,8 @@
 <% if current_user.id == @pet.user_id %>
-<h1>Editing Pet</h1>
-
-<%= render 'form', pet: @pet %>
-
-<%= link_to 'Show', @pet %> |
-<%= link_to 'Back', pets_path %>
+    <h1 class= "deepshd" style= "text-align:center"><%= "Edit Pet "%> </h1>
+    <%= render 'form', pet: @pet %>
 
 <% else %>
     <h1>You don't have access to edit this pet!!</h1>
-
 <% end %>
     

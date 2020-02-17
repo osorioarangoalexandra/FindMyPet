@@ -1,75 +1,79 @@
+<div class="container">
+
 
   <%= form_with model: @pet do |form | %>
 
-
-    <div class="field">
+<form class="form-horizontal">
+    <div class="form-group">
     <p> 
-        <%= form.label :name %>
+        <label class="control-label col-sm-2"> Name:</label>
         <%= form.text_field :name  %>
     </P>
     </div>
-    <div class="field">
+    <div class="form-group">
     <p> 
-        <%= form.label :last_seen %>
+        <label class="control-label col-sm-2"> Last Seen:</label>
         <%= form.text_field :last_seen  %>
     </P>
     </div>
     
-    <div class="field">
+    <div class="form-group">
     <p>
-        <%= form.label :category %>
+        <label class="control-label col-sm-2"> Category:</label>
         <%= form.select :category,['Cat','Dog','Bird']  %>
     </p>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <p>
-        <%= form.label :breed %>
+        <label class="control-label col-sm-2"> Breed:</label>
         <%= form.text_field :breed  %>
       </p>
     </div>
 
-    <div class="field">
+    <div class="form-group">
      <p>
-        <%= form.label :color %>
+        <label class="control-label col-sm-2"> Color:</label>
         <%= form.text_field :color  %>
     </p>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <p>
-        <%= form.label :characteristic %>
+        <label class="control-label col-sm-2"> Characteristic:</label>
         <%= form.text_field :characteristic  %>
       </p>
     </div>
 
 
-    <div class="field">
+    <div class="form-group">
     <p>
-    <%= form.label :image %>
+    <label class="control-label col-sm-2"> Image:</label>
     <%= form.file_field :image %>
     </p>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <p>
-        <%= form.label :date_lost %>
+        <label class="control-label col-sm-2"> Date Lost:</label>
         <%= form.date_field :date_lost  %>
       </p>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <p>
-        <%= form.label :Is_your_pet_lost? %>
+        <label class="control-label col-sm-2"> Is your pet lost?</label>
         <%= form.check_box :status  %>
       </p>
     </div>
 
 
     <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Pet", class:"btn btn-outline-success"%>
+    <%= link_to 'Back', pets_path, class:"btn btn-outline-secondary"%>
+
     </div>
 
 <%end%>
-
+</div>
 <h1></h1>

@@ -3,22 +3,26 @@
    
 <div class="container">
 <h1 class= "deepshd" style= "text-align:center"><%= "Did you saw #{@pet.name}?"%> </h1>
-<p></p>
+<p>
+
+</p>
 <form class="form-horizontal">
     <div class="form-group">
         <label class="control-label col-sm-2"> When?</label>
         <%= form.date_field :last_seen%>
     </div>
     <div></div>
-    <label class="control-label col-sm-2"> Place</label>
+    <label class="control-label col-sm-2"> Place:</label>
     <%= form.text_field :place%>
     <div></div>
     
-    <label class="control-label col-sm-2" > comment</label>
+    <label class="control-label col-sm-2" > Comment:</label>
     <%= form.text_area :comment%>
 
     <p> </P>
-    <%= form.submit %>
+    <div class="actions">
+   
+    <%= form.submit "Create Report", class:"btn btn-outline-success"%>
 <% end %>
 
        <%= link_to 'Back', pets_path,class:"btn btn-outline-secondary"%>
