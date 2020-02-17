@@ -3,76 +3,90 @@
     <div> </div>
     <div> </div>
     <div> </div>
-    <%= image_tag(@pet.image, style: "width: 100px", class: "img-rounded") %>
-    
-    <div> </div>
+    <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-6">
+        <%# <%= "Name:" %> 
+       <div class="deepshd2" style= "text-align:center">
+        <h2> <%= @pet.name %> </h2>
+      <p></p>
+        <div> </div>
+       </div>
+
+       <div style= "text-align:center">
+      <%= image_tag(@pet.image, style: "width: 200px", class: "rounded") %>
+      <div> </div>
    
-    <%= "Name:" %>
-    <%= @pet.name %>
-    <div> </div>
-    <%= "Category:" %>
-    <%=  @pet.category %>
-    <div> </div>
-    <%= "Breed:"%>
-    <%= @pet.breed %>
-    <div> </div>
-    <%= "Color:"%>
-    <%= @pet.color %>
-    <div> </div>
-    <%= "Characteristic:"%>
-    <%= @pet.characteristic %>
-    <div> </div>
-    <%= "Owner:"%>
-    <%= @pet.user.name %>
-    <div> </div>
-    <%= "Date Lost:"%>
-    <%= @pet.date_lost %>
-    <div> </div>
-    <%= "Longitude:"%>
-    <%= @pet.longitude %>
-    <div> </div>
-    <%= "Latitude:"%>
-    <%= @pet.latitude %>
-    <div> </div>
-    <%= "Status:"%>
-    <%= @pet.status %>  
-    <div> </div>
-    <div> </div>
 
-<div id="map" style="width:100%;height:400px;"></div>
+        <%= "Category:" %>
+        <%=  @pet.category %>
+        <div> </div>
+        <%= "Breed:"%>
+        <%= @pet.breed %>
+        <div> </div>
+        <%= "Color:"%>
+        <%= @pet.color %>
+        <div> </div>
+        <%= "Characteristic:"%>
+        <%= @pet.characteristic %>
+        <div> </div>
+        <%= "Owner:"%>
+        <%= @pet.user.name %>
+        <div> </div>
+        <%= "Date Lost:"%>
+        <%= @pet.date_lost %>
+        <div> </div>
+        <%= "Last seen:"%>
+        <%= @pet.last_seen %>
+        <div> </div>
+    </div>
+    </div>
+ 
+     <div class="col-sm-3 col-md-6">
+      <div id="map" style="width:100%;height:300px;"></div>
 
+    </div>
+      </div>
     <script>
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: <%= @pet.latitude %>, lng: <%= @pet.longitude %>},
-          zoom: 20
+          zoom: 15
         });
+          var marker = new google.maps.Marker(document.getElementById('map'), {
+              position: {lat: <%= @pet.latitude %>, lng: <%= @pet.longitude %>}});
       }
+      
     </script>
 
- <h1> Last Seen Reports </h1>
 
-<table>
-  <thead style= text-align:center;>
+    
+
+    
+<p> </p>
+ <h1 class="deepshd" style= text-align:center> Last Seen Reports </h1>
+ <p> </p>
+<div class="container">
+<table class="table-striped"  >
+  <thead style= text-align:center >
   
     <tr>
-      <th>Who made the report</th>
-      <th>When?</th>
-      <th>Where Lat?</th>
-      <th>Where Lon?</th>
+      <th>Who made the report </th>
+      <th>When? </th>
+      <th>Where?  </th>
       <th>Comment</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
+      
     </tr>
   </thead>
 
   <tbody style= text-align:center;>
     <% @pet.reports.each do |report| %>
       <tr>
-        <td><%= report.user_id%></td>
+        <td><%= report.user.name%></td>
         <td><%= report.last_seen %></td>
-        <td><%= report.latitude %></td>
-        <td><%= report.longitude %></td>
+        <td><%= report.place %></td>
         <td><%= report.comment %></td>
         
       </tr>
@@ -81,20 +95,28 @@
 </table>
 
      <% if user_signed_in? && current_user.id == @pet.user.id %>
-        <%= link_to "Edit 2", "/pets/#{params[:id]}/edit" %>
-        <%= link_to "New Report", "/pets/#{params[:id]}/reports/new" %>
-       <%= link_to 'Back', pets_path %>
+       <%= link_to "Edit", "/pets/#{params[:id]}/edit",class:"btn btn-outline-primary" %>       
+       
+        <%= link_to "New Report", "/pets/#{params[:id]}/reports/new",class:"btn btn-outline-success"%>     
+        
+       <%= link_to 'Back', pets_path,class:"btn btn-outline-secondary"%>
      <% elsif user_signed_in? %>
-        <%= link_to "New Report", "/pets/#{params[:id]}/reports/new" %>
-        <%= link_to 'Back', pets_path %>
+        <%= link_to "New Report", "/pets/#{params[:id]}/reports/new",class:"btn btn-outline-success" %>   
+        
+        <%= link_to 'Back', pets_path, class:"btn btn-outline-secondary"%>
     <% elsif %>
         <h3>Have you seen this pet?!!</h3>
         <h3>Log In or sign up to create a report!</h3>
 
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <%= link_to "Sign up", new_user_registration_path,class:"btn btn-primary"  %>   
+       
+        <%= link_to "Login", new_user_session_path,class:"btn btn-primary" %>
     
     <% end %>
     
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['API_KEY']%>&callback=initMap"
   type="text/javascript"></script>
+
+
+
+    

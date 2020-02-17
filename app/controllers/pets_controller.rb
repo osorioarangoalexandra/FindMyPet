@@ -10,6 +10,7 @@ class PetsController < ApplicationController
     end
 
     def new
+        
         @pet = Pet.new
     end
 
@@ -28,11 +29,16 @@ class PetsController < ApplicationController
     end
 
     def edit
+        
         @pet = Pet.find(params[:id])
     end
 
     def update
+
         pet = Pet.find(params["id"])
+        latlong = Geocoder.search(params[:pet][:last_seen]).first.coordinates
+         pet.longitude = latlong[1]
+         pet.latitude = latlong[0]
         pet.update(pet_params)
         redirect_to pets_path
     end

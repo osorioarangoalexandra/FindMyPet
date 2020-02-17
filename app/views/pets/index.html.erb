@@ -1,33 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<h1 style= "text-align: center;">Lost Pets</h1>
-<p></p>
-<div class="d-flex justify-content-around">
-<table>
-  
-  <tbody>
- 
-    <% @pets.each do |pet| %>
-      <tr>
-      
-      <div class="card" style="width: 18rem;">
-      <%= image_tag(pet.image, style: "width: 100px" ) %>
-      <div class="card-body">
-      <h5 class="card-title"><%= "Name: #{pet.name}" %></h5>
-      <p class="card-text"> <%= "Date Lost: #{pet.date_lost}" %></p>
-      <a><%= link_to 'See Details', pet, :class => "button btn btn-info" %> </a>
-
-      
-  </div>
-</div>
-        
-      </tr>
-  </div>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 
-<%# <%= link_to 'New Pet', new_pet_path %> 
+<h1 style= "text-align: center"; class="deepshd">Lost Pets</h1>
+<p>
+
+</p>
+  <div class="container">
+    <div class="row">    
+      <% @pets.each do |pet| %>
+        <tr id="center-cards">
+            <div class="col-sm">   
+              <div class="card",class="flex-container" style="width: 18rem;">
+                  <%= image_tag(pet.image, style: "width: 100px", height:"100px", id:"center-cards", class:"img-rounded" ) %>
+                  <div class="card-body",class="flex-container">
+                      <h5 id="left-cards"><%= "Name: #{pet.name}" %></h5>
+                      <p class="card-text"> <%= "Date Lost: #{pet.date_lost}" %></p>
+                      <a><%= link_to 'See Details', pet, :class => "button btn btn-info",  id:"center-cards" %> </a>
+                      
+                  </div>
+              </div>
+      <p></p>
+             </div>
+          </tr>
+      <% end %>
+    </div>
+  </div> 

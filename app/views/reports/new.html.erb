@@ -1,17 +1,27 @@
+
 <%= form_for [@pet,@report] do |form|%>
    
-<h1><%= "Did you saw #{@pet.name}?"%> </h1>
-
-    <label > When?</label>
-    <%= form.date_field :last_seen%>
+<div class="container">
+<h1 class= "deepshd" style= "text-align:center"><%= "Did you saw #{@pet.name}?"%> </h1>
+<p></p>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2"> When?</label>
+        <%= form.date_field :last_seen%>
+    </div>
     <div></div>
-    <label > Latitude</label>
-    <%= form.text_field :latitude%>
+    <label class="control-label col-sm-2"> Place</label>
+    <%= form.text_field :place%>
     <div></div>
-    <label > Longitude</label>
-    <%= form.text_field :longitude%>
-    <div></div>
-    <label > comment</label>
+    
+    <label class="control-label col-sm-2" > comment</label>
     <%= form.text_area :comment%>
+
+    <p> </P>
     <%= form.submit %>
 <% end %>
+
+       <%= link_to 'Back', pets_path,class:"btn btn-outline-secondary"%>
+
+   
+

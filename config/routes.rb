@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :reports 
   end
   root to: "pets#index"
-  
+ 
 end

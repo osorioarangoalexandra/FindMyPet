@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_005833) do
+ActiveRecord::Schema.define(version: 2020_02_17_165007) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_005833) do
     t.decimal "latitude"
     t.decimal "longitude"
     t.boolean "status"
+    t.string "last_seen"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_005833) do
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "place"
   end
 
   create_table "users", force: :cascade do |t|
